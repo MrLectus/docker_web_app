@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  s1:
+     build: ./node_app
+     volumes:
+      - ./node_app:/home/app/app
+     expose:
+     - "3000"
+     hostname: s101
+
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./webserver/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - s1
+    ports:
+      - "80:80"
+
+networks:
+    default:
+      driver: bridge
+      name: s1
