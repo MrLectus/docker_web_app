@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 
 app.get('/', (_, res) => {
-  res.send('Load balancer form NGINX-Server');
+  res.send('Load balancer form NGINX-Server123');
 });
 
 app.listen(port, () => {
